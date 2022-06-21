@@ -12,12 +12,20 @@ jobs:
         run: |
           python --version
           pip --version
-      - name: Echo debug secrets 
-        run: | 
+      - name: Echo debug secrets
+        run: |
           echo $ACTIONS_RUNNER_DEBUG
           echo $ACTIONS_STEP_DEBUG
       - name: Python commans
-        run: | 
+        run: |
           import platform
           print(platform.processor())
-        shell: python # override default shell 
+        shell: python # override default shell
+  run-windows-commands:
+    runs-on: windows-latest
+    steps:
+      - name: Output current dir Powershell
+        run: Get-Location
+      - name: Output current dir Bash
+        run: pwd
+        shell: bash
