@@ -12,3 +12,7 @@ jobs:
         run: |
           python --version
           pip --version
+      - name: echo debug secrets 
+        run: | 
+          echo $ACTIONS_RUNNER_DEBUG
+          echo $ACTIONS_STEP_DEBUG
