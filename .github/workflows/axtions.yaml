@@ -1,0 +1,15 @@
+name: Actions worklflow
+
+on: [push]
+
+jobs:
+  run-gitlab-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Simmplae js Actions
+        id: greet
+        uses: actions/hello-world-javascript-action@v1.1 # or branch (master) which is not recommended because breaking changes can be introduced or commitId
+        with: # Action input
+          who-to-greet: Michal 
+      - name: Log Greeting time
+        run: echo "${{ steps.greet.outputs.time }}" # referencing ouput of action
