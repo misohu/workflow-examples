@@ -23,6 +23,7 @@ jobs:
         shell: python # override default shell
   run-windows-commands:
     runs-on: windows-latest
+    needs: ["run-shell-command"]
     steps:
       - name: Output current dir Powershell
         run: Get-Location
