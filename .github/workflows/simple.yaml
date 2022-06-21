@@ -6,13 +6,18 @@ jobs:
   run-shell-command:
     runs-on: ubuntu-latest
     steps:
-      - name: echo a string
+      - name: Echo a string
         run: echo "Hello world" # Ubuntu and Mac have by default Bash and windows has Powershell
-      - name: multiline script
+      - name: Multiline script
         run: |
           python --version
           pip --version
-      - name: echo debug secrets 
+      - name: Echo debug secrets 
         run: | 
           echo $ACTIONS_RUNNER_DEBUG
           echo $ACTIONS_STEP_DEBUG
+      - name: Python commans
+        run: | 
+          import platform
+          print(platform.processor())
+        shell: python # override default shell 
