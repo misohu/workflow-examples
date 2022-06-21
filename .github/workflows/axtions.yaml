@@ -6,10 +6,14 @@ jobs:
   run-gitlab-actions:
     runs-on: ubuntu-latest
     steps:
+      - name: List files
+        run: |
+          pwd 
+          ls -la
       - name: Simmplae js Actions
         id: greet
         uses: actions/hello-world-javascript-action@v1.1 # or branch (master) which is not recommended because breaking changes can be introduced or commitId
         with: # Action input
-          who-to-greet: Michal 
+          who-to-greet: Michal
       - name: Log Greeting time
         run: echo "${{ steps.greet.outputs.time }}" # referencing ouput of action
