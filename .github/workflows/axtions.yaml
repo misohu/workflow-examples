@@ -1,6 +1,6 @@
 name: Actions worklflow
 
-# on: [push]
+on: [push]
 
 # on: [pull_request] # this is for opened reopen and synchronised
 # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request
@@ -19,14 +19,31 @@ name: Actions worklflow
 #   repository_dispatch: # trigger by POST request to some url with body containning event_type, empty will match all 
 #     types: [build] # we need to send specific eventype. Inorder to authorize you need a token (besic auth with password)
 
-on:
-  workflow_dispatch:
-    inputs:
-      environment:
-        description: Environment specification
-        required: true
-        type: string
-        default: production
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       environment:
+#         description: Environment specification
+#         required: true
+#         type: string
+#         default: production
+
+# on:
+#   push:
+#     branches:
+#       - master
+#       - 'feature/*' # use patter !! careful * does not match / e.g. /feature/sprint1/xx
+#       - 'feature/**' # matches also /
+#       - '!feature/x1  # exclude
+#     branches-ignore: # carefull this cannot be used in combination with branches 
+        # - xxx # ignore this branch
+      # tags:
+      #   - 'v1.0'
+      # paths:
+      #   - '*.js' # match all js files in push
+#   pull_request:
+#     branches:
+#       - master
 
 jobs:
   run-gitlab-actions:
