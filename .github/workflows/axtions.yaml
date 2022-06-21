@@ -6,6 +6,11 @@ jobs:
   run-gitlab-actions:
     runs-on: ubuntu-latest
     steps:
+      - name: Clone repo
+        uses: actions/checkout@v3
+        run: |
+          pwd 
+          ls -la
       - name: List files
         run: |
           pwd 
