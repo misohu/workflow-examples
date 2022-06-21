@@ -1,6 +1,32 @@
 name: Actions worklflow
 
-on: [push]
+# on: [push]
+
+# on: [pull_request] # this is for opened reopen and synchronised
+# https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request
+
+# on:
+#   push:
+#   pull_request:
+#     types: [closed, assigned, opened, reopened]
+
+# on:
+#   schedule:
+#     - cron: "*/5 * * * *" # minutes, hours, day of month, month, a day of week
+#     - cron: "*/6 * * * *"
+
+# on:
+#   repository_dispatch: # trigger by POST request to some url with body containning event_type, empty will match all 
+#     types: [build] # we need to send specific eventype. Inorder to authorize you need a token (besic auth with password)
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Environment specification
+        required: true
+        type: string
+        default: production
 
 jobs:
   run-gitlab-actions:
@@ -27,3 +53,5 @@ jobs:
           who-to-greet: Michal
       - name: Log Greeting time
         run: echo "${{ steps.greet.outputs.time }}" # referencing ouput of action
+      - name: Get inputs 
+        run: echo ${{ inputs }}
