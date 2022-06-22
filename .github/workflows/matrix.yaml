@@ -1,6 +1,6 @@
 # strategy helps to setup env matrix ubuntu, win ... node versions, ...
 name: Matrix
-on: push
+on: pull_request
 jobs:
   node_version:
     strategy:
