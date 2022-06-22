@@ -1,0 +1,15 @@
+# strategy helps to setup env matrix ubuntu, win ... node versions, ...
+name: Matrix
+on: push
+jobs:
+  node_version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log node version
+        run: node -v
+      - name: Change node version
+        uses: actions/setup-node@v1.1
+        with:
+          node-version: 6
+      - name: Log node version
+        run: node -v
