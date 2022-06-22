@@ -17,3 +17,20 @@ jobs:
         run: |
           node -v
           cat /etc/os-release
+  docker-steps:
+    runs-on: ubuntu-latest
+    container:
+      image: node:10.18.0-jessie
+    steps:
+      - name: Logg node version
+        run: node -v
+      - name: Step with docker container
+        uses: docker://node:12.14.1-alpine3.10 # runs entrypoint of docker
+        with: # we can provide etrypoint
+          entrypoint: '/bin/echo' # ENTRYPOINT
+          args: 'Hello world' # CMD
+      - name: log node version
+        uses: docker://node:12.14.1-alpine3.10 # runs entrypoint of docker
+        with: # we can provide etrypoint
+          entrypoint: '/usr/local/bin/node' # ENTRYPOINT
+          args: '-v' # CMD
