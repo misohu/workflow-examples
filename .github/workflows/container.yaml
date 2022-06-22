@@ -34,3 +34,9 @@ jobs:
         with: # we can provide etrypoint
           entrypoint: '/usr/local/bin/node' # ENTRYPOINT
           args: '-v' # CMD
+      - uses: actions/checkout@v1
+      - name: Run a script
+        uses: docker://node:12.14.1-alpine3.10 # runs entrypoint of docker
+        with: # we can provide etrypoint
+          entrypoint: './script.sh' # ENTRYPOINT
+          args: 'This is custom arg' # CMD
