@@ -1,6 +1,6 @@
 name: Actions worklflow
 
-on: [push]
+on: [pull_request]
 
 # on: [pull_request] # this is for opened reopen and synchronised
 # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request

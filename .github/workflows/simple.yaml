@@ -1,17 +1,20 @@
 name: Shell commands
 
-on: [push]
+on: [pull_request]
 
 jobs:
   run-shell-command:
     runs-on: ubuntu-latest
+    timeout-minutes: 360 # max minutes it can take 
     steps:
       - name: Echo a string
         run: echo "Hello world" # Ubuntu and Mac have by default Bash and windows has Powershell
+        continue-on-error: true # job will continue even if it fails
       - name: Multiline script
         run: |
           python --version
           pip --version
+        timeout-minutes: 300 # same as in jobs
       - name: Echo debug secrets
         run: |
           echo $ACTIONS_RUNNER_DEBUG
